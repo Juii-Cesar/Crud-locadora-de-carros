@@ -1,0 +1,37 @@
+
+
+BANCO DE DADOS ALUGUEL DE CARROS
+
+CREATE database locadoraCarros;
+
+use locadoraCarros;
+
+create table clientes(
+	idClientes int AUTO_INCREMENT PRIMARY KEY,
+	nome varchar(100) not null,
+    email varchar(100) not null,
+    tel varchar(15) not null
+);
+
+use locadoraCarros;
+
+create table carros(
+	idCarro int AUTO_INCREMENT PRIMARY KEY,
+	modelo varchar(100) not null,
+    valor decimal(10,2) not null,
+    placa varchar(10) not null,
+    disponivel boolean DEFAULT true
+);
+
+use locadoraCarros;
+
+create table alugueis(
+	idCarro int,
+	idCliente int,
+    idEmprestimo int AUTO_INCREMENT primary key,
+    dataEmprestimo date not null DEFAULT CURRENT_DATE,
+    dataDevolucao date,
+    FOREIGN key (idCarro) REFERENCES carros(idCarro),
+    FOREIGN key (idCliente) REFERENCES clientes(idClientes)
+);
+

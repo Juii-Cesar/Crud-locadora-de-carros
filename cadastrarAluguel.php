@@ -1,49 +1,61 @@
 <?php
 include("conexao.php");
+
+$mensagem = ""; 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idCliente = trim($_POST['idCliente']);
     $idCarro = trim($_POST['idCarro']);
     $dataDevolucao = trim($_POST['dataDevolucao']);
+    
+    if(empty($dataDevolucao)) {
+        $dataDevolucao = NULL;
+    }
 
-    if(!empty($idCliente)&& !empty($idCarro)) {
+    if(!empty($idCliente) && !empty($idCarro)) {
         $stmt = $conn->prepare("insert into alugueis (idCliente, idCarro, dataDevolucao) VALUES (?, ?, ?)");
-        $stmt->bind_param("sii",$idCliente,$idCarro,$dataDevolucao);
+        $stmt->bind_param("iis",$idCliente,$idCarro,$dataDevolucao);
 
         if ($stmt->execute()) {
-            // style aqui
-            echo "<p style='color:green;'>Carro cadastrado com sucesso!</p>";
+            $mensagem = "<p class='msg-success'>Aluguel cadastrado com sucesso!</p>";
         } else {
-            echo "<p style='color:red;'>Erro ao cadastrar: " . $stmt->error . "</p>";
+            $mensagem = "<p class='msg-error'>Erro ao cadastrar: " . $stmt->error . "</p>";
         }
-
         $stmt->close();
     }else{
-        echo "<p style='color:red;'>Preencha todos os campos obrigatórios!</p>";
+        $mensagem = "<p class='msg-error'>Preencha os campos de ID do Cliente e ID do Carro!</p>";
     }
 }
+$conn->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=S, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro de Aluguel</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>cadastro de aluguel</h1>
-    <a href="index.php">voltar a tela principal</a>
-    <form method="post" action="">
-        <label>Id do Cliente:</label><br>
-        <input type="number" name="idCliente" required><br><br>
-
-        <label>Id do Carro:</label><br>
-        <input type="number" name="idCarro" required><br><br>
-
-        <label>Data de devolução:</label><br>
-        <input type="date" name="dataDevolucao"><br><br>
+    <div class="container">
+        <h1>Cadastro de Aluguel</h1>
+        <a href="index.php">Voltar</a>
         
-        <button type="submit">cadastrar</button>
-    </form>
+        <?php echo $mensagem; ?>
+
+        <form method="post" action="">
+            <label>ID do Cliente:</label>
+            <input type="number" name="idCliente" required>
+
+            <label>ID do Carro:</label>
+            <input type="number" name="idCarro" required>
+
+            <label>Data de Devolução (Opcional):</label>
+            <input type="date" name="dataDevolucao">
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
 </body>
 </html>

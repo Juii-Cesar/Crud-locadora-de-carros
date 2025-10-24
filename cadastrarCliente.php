@@ -1,52 +1,55 @@
 <?php
 include("conexao.php");
+
+$mensagem = ""; 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = trim($_POST['nome']);
     $email = trim($_POST['email']);
-    $idade = trim($_POST['tel']);
+    $tel = trim($_POST['tel']);
 
-    if(!empty($nome)&& !empty($email) && !empty($tel)) {
+    if(!empty($nome) && !empty($email) && !empty($tel)) {
         $stmt = $conn->prepare("insert into clientes (nome, email, tel) VALUES (?, ?, ?)");
         $stmt->bind_param("ssi",$nome,$email,$tel);
 
         if ($stmt->execute()) {
-            // style aqui
-            echo "<p style='color:green;'>Cliente cadastrado com sucesso!</p>";
+            $mensagem = "<p class='msg-success'>Cliente cadastrado com sucesso!</p>";
         } else {
-            echo "<p style='color:red;'>Erro ao cadastrar: " . $stmt->error . "</p>";
+            $mensagem = "<p class='msg-error'>Erro ao cadastrar: " . $stmt->error . "</p>";
         }
-
         $stmt->close();
     }else{
-        echo "<p style='color:red;'>Preencha todos os campos obrigatórios!</p>";
+        $mensagem = "<p class='msg-error'>Preencha todos os campos obrigatórios!</p>";
     }
 }
+$conn->close();
 ?>
 
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro de Cliente</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>cadastro de cliente</h1>
-    <a href="index.php">voltar a tela principal</a>
-    
-    <form method="post" action="">
-        <label>Nome:</label><br>
-        <input type="text" name="nome" required><br><br>
+    <div class="container">
+        <h1>Cadastro de Cliente</h1>
+        <a href="index.php">Voltar</a>
 
-        <label>Email:</label><br>
-        <input type="text" name="email" required><br><br>
-
-        <label>Telefone:</label><br>
-        <input type="number" name="tel" required><br><br>
+        <?php echo $mensagem; ?>
         
-        <button type="submit">cadastrar</button>
-    </form>
+        <form method="post" action="">
+            <label>Nome:</label>
+            <input type="text" name="nome" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required> <label>Telefone:</label>
+            <input type="number" name="tel" required>
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
 </body>
 </html>
