@@ -18,6 +18,7 @@ include("conexao.php");
             <a href="cadastrarCliente.php">Cadastro de Cliente</a>
             <a href="cadastrarCarro.php">Cadastro de Carro</a>
             <a href="cadastrarAluguel.php">Aluguel</a>
+            <a href="consultarCliente.html">Consultar clientes</a>
         </nav>
     </div>
     
