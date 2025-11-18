@@ -25,13 +25,48 @@ $resultado = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Clientes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="menuLateral.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <nav class="menuLateral">
+        <div class="btnAbrir">
+            <i class="bi bi-list"></i>
+        </div>
+         <ul>
+            <li class="itemMenu">
+                <a href="index.php">
+                    <span class="icon"><i class="bi bi-house"></i></span>
+                    <span class="txtLink">Home</span>
+                </a>
+            </li>
+            <li class="itemMenu">
+                <a href="consultarCliente.html">
+                    <span class="icon"><i class="bi bi-person"></i></span>
+                    <span class="txtLink">Clientes</span>
+                </a>
+            </li>
+            <li class="itemMenu">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-car-front-fill"></i></span>
+                    <span class="txtLink">Carros</span>
+                </a>
+            </li>
+            <li class="itemMenu">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-taxi-front-fill"></i></span>
+                    <span class="txtLink">Alugueis</span>
+                </a>
+            </li>
+         </ul>
+    </nav>
+
 <div class="container">
     <h1>Consulta de Clientes</h1>
 
-    <a href="index.php">Voltar</a>
+    <a href="consultarCliente.html">Voltar</a>
     <form method="post" action="consultarCliente.php" class="search-form">
         <input type="text" name="nome" placeholder="Pesquisar por nome..." value="<?= htmlspecialchars($consulta) ?>">
         <button type="submit">Buscar</button>

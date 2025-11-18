@@ -21,12 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->execute()) {
             echo "<script>
                 alert('Cliente atualizado com sucesso!');
-                window.location.href = 'index.php';
+                window.location.href = 'consultarCliente.html';
             </script>";
         } else {
             echo "<script>
                 alert('Erro ao atualizar Cliente: " . addslashes($stmt->error) . "');
-                window.location.href = 'index.php';
+                window.location.href = 'consultarCliente.html';
             </script>";
         }
 
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<script>
             alert('Erro na preparação da consulta: " . addslashes($conn->error) . "');
-            window.location.href = 'index.php';
+            window.location.href = 'consultarCliente.html';
         </script>";
     }
 
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "<script>
         alert('Requisição inválida.');
-        window.location.href = 'index.php';
+        window.location.href = 'consultarCliente.html';
     </script>";
 }
 ?>
