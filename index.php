@@ -51,7 +51,7 @@ include("conexao.php");
                 </a>
             </li>
             <li class="itemMenu">
-                <a href="consultarEmprestimos.php">
+                <a href="consultarEmprestimo.php">
                     <span class="icon"><i class="bi bi-taxi-front-fill"></i></span>
                     <span class="txtLink">Alugueis</span>
                 </a>

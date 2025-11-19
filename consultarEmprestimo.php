@@ -1,6 +1,14 @@
 <?php
 include "conexao.php";
 
+$mensagem = "";
+
+if (isset($_GET['msg'])) {
+    if ($_GET['msg'] === "excluido") {
+        $mensagem = "<p class='msg-success'>Aluguel excluído com sucesso!</p>";
+    }
+}
+
 $buscar = $_GET['buscar'] ?? "";
 
 $sql = "SELECT 
@@ -74,6 +82,7 @@ $result = $stmt->get_result();
     <h1>Alugueis</h1>
 
     <a href="cadastrarAluguel.php"><i class="bi bi-plus-circle"></i> Adicionar Aluguel</a>
+    <?php echo $mensagem; ?>
     <form method="GET">
         <input type="text" name="buscar" placeholder="Nome do cliente, modelo ou placa" value="<?php echo $buscar; ?>">
         <button type="submit">Pesquisar</button>
@@ -97,6 +106,18 @@ $result = $stmt->get_result();
             <td><?php echo $row['placa']; ?></td>
             <td><?php echo $row['dataEmprestimo']; ?></td>
             <td><?php echo $row['dtDevolucaoPrevista']; ?></td>
+            <td>
+                <form method="post" action="excluirAluguel.php" style="display:inline;">
+                    <input type="hidden" name="idEmprestimo" value="<?= $row["idEmprestimo"] ?>">
+                    <button type="submit">Excluir</button>
+                </form>
+
+                <form method="get" action="editar.php" style="display:inline; margin-left:5px;">
+                    <input type="hidden" name="idEmprestimo" value="<?= $row["idEmprestimo"] ?>">
+                    <button type="submit">Editar</button>
+                </form>
+            </td>
+
         </tr>
         <?php } ?>
     </table>

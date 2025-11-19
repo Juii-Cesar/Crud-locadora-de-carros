@@ -92,7 +92,7 @@ $resultado = $stmt->get_result();
                         <td><?= htmlspecialchars($linha["email"]) ?></td>
                         <td><?= htmlspecialchars($linha["tel"]) ?></td>
                         <td>
-                            <form method="post" action="excluir.php" style="display:inline;">
+                            <form method="post" action="excluirCliente.php" style="display:inline;">
                                 <input type="hidden" name="idClientes" value="<?= $linha["idClientes"] ?>">
                                 <button type="submit">Excluir</button>
                             </form>
