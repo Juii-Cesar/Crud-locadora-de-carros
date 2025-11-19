@@ -32,7 +32,8 @@ if (isset($_GET["idClientes"])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="menuLateral.css">
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>AlugaCars</title>
+    <link rel="shortcut icon" href="alugacars.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -72,7 +73,7 @@ if (isset($_GET["idClientes"])) {
 
     
         <h2>Editar Cliente</h2>
-        <a href="index.php">Voltar</a>
+        <a href="consultarCliente.html>Voltar</a>
         <form method="post" action="atualizar.php">
             <input type="hidden" name="idClientes" value="<?php echo $clientes['idClientes']; ?>">
             <label>Nome:</label><br>

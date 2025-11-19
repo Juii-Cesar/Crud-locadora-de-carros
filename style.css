@@ -73,6 +73,18 @@ input[type="date"] {
     color: #f6f6f6;
 }
 
+select{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #141414;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #333;
+    color: #f6f6f6;
+}
+
 button[type="submit"] {
     display: block;
     width: 100%;

@@ -7,7 +7,8 @@ include("conexao.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locadora veícular</title>
+    <title>AlugaCars</title>
+    <link rel="shortcut icon" href="alugacars.ico" type="image/x-icon">
     <link rel="stylesheet" href="paginaInicial.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="menuLateral.css">
@@ -50,7 +51,7 @@ include("conexao.php");
                 </a>
             </li>
             <li class="itemMenu">
-                <a href="#">
+                <a href="consultarEmprestimos.php">
                     <span class="icon"><i class="bi bi-taxi-front-fill"></i></span>
                     <span class="txtLink">Alugueis</span>
                 </a>
