@@ -72,7 +72,7 @@ $conn->close();
 
     <div class="container">
         <h1>Cadastro de Carro</h1>
-        <a href="index.php">Voltar</a>
+        <a href="consultarCarros.php">Voltar</a>
 
         <?php echo $mensagem; ?>
 
