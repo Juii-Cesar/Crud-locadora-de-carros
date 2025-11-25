@@ -86,13 +86,13 @@ $conn->close();
                 </a>
             </li>
             <li class="itemMenu">
-                <a href="#">
+                <a href="consultarCarros.php">
                     <span class="icon"><i class="bi bi-car-front-fill"></i></span>
                     <span class="txtLink">Carros</span>
                 </a>
             </li>
             <li class="itemMenu">
-                <a href="#">
+                <a href="consultarEmprestimo.php">
                     <span class="icon"><i class="bi bi-taxi-front-fill"></i></span>
                     <span class="txtLink">Alugueis</span>
                 </a>

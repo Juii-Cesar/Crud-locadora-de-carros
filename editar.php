@@ -37,7 +37,7 @@ if (isset($_GET["idClientes"])) {
 </head>
 <body>
 
-     <nav class="menuLateral">
+    <nav class="menuLateral">
         <div class="btnAbrir">
             <i class="bi bi-list"></i>
         </div>
@@ -55,13 +55,13 @@ if (isset($_GET["idClientes"])) {
                 </a>
             </li>
             <li class="itemMenu">
-                <a href="#">
+                <a href="consultarCarros.php">
                     <span class="icon"><i class="bi bi-car-front-fill"></i></span>
                     <span class="txtLink">Carros</span>
                 </a>
             </li>
             <li class="itemMenu">
-                <a href="#">
+                <a href="consultarEmprestimo.php">
                     <span class="icon"><i class="bi bi-taxi-front-fill"></i></span>
                     <span class="txtLink">Alugueis</span>
                 </a>
