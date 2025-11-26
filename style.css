@@ -4,24 +4,24 @@
     --color-alugacars: #005d9b;
     --color-abas: #202020;
     --color-indicador: #000;
-
 }
 
 .light-mode:root{
-    --body-bg-color: #cacaca;
+    --body-bg-color: #b4b4b4;
     --body-color: #181818;
     --color-alugacars: #005d9b;
-    --color-abas: #ebebeb;
+    --color-abas: #cacaca;
     --bg-text-box:#dfdfdf;
-    --color-indicador: #b1b1b1;
+    --color-indicador: #f0f0f0;
 }
+
 
 body {
     font-family: Arial, sans-serif;
     background-color: var(--body-bg-color);
     color: var(--body-color);
     margin: 0;
-    padding: 20px;
+    padding: 0px;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
@@ -66,7 +66,7 @@ body {
 div.container {
     max-width: 1000px;
     width: 90%;
-    margin: 0;
+    margin: auto;
     padding: 25px;
     background-color: var(--color-abas);
     border-radius: 8px;
@@ -133,6 +133,10 @@ select{
     font-size: 16px;
     background-color: var(--bg-text-box);
     color: #f6f6f6;
+}
+
+select option{
+    background-color: var(--body-bg-color);
 }
 
 button[type="submit"] {
@@ -233,4 +237,26 @@ button {
 
 button:hover {
     background-color: var(--cor-botao-hover);
+}
+
+
+footer.main-footer{
+    background-color: var(--color-abas);
+    padding: 25px 20px;
+    text-align: center;
+    border-top: 2px solid #1d1d1d;
+    color: var(--body-color);
+    margin-top: auto;
+    width: 100%;
+    user-select: none;
+}
+
+.social-links a{
+    color: var(--color-alugacars);
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-links a:hover{
+    text-decoration: underline;
 }

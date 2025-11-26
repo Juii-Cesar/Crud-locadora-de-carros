@@ -13,28 +13,15 @@ include("conexao.php");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="menuLateral.css">
 </head>
+
 <body>
-    <header class="inicio">
-        <div class="titulo">
-            <H1><i class="bi bi-taxi-front-fill"></i></H1>
-            <h1>AlugaCars</h1>
-        </div>
-        <div id="trilho" class="trilho">
-            <div id="indicador" class="indicador"></div>
-        </div>
 
-    </header>
-
-    <div class="container">
-        <img src="carros.jpg" alt="carros estacionados">
-        <h1 class="anuncioCarros">AlugaCars, Aluguel Veícular em todo Brasil! </h1>
-    </div>
-
+    <!-- MENU LATERAL -->
     <nav class="menuLateral">
         <div class="btnAbrir">
             <i class="bi bi-list"></i>
         </div>
-         <ul>
+        <ul>
             <li class="itemMenu">
                 <a href="#">
                     <span class="icon"><i class="bi bi-house"></i></span>
@@ -59,8 +46,41 @@ include("conexao.php");
                     <span class="txtLink">Alugueis</span>
                 </a>
             </li>
-         </ul>
+        </ul>
     </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="conteudo">
+
+        <header class="inicio">
+            <div class="titulo">
+                <h1><i class="bi bi-taxi-front-fill"></i></h1>
+                <h1>AlugaCars</h1>
+            </div>
+
+            <div id="trilho" class="trilho">
+                <div id="indicador" class="indicador"></div>
+            </div>
+        </header>
+
+        <div class="container">
+            <img src="carros.jpg" alt="carros estacionados">
+            <h1 class="anuncioCarros">AlugaCars, Aluguel Veicular em todo Brasil!</h1>
+        </div>
+
+    </main>
+
+    
+    <footer class="main-footer">
+        <p>&copy; 2025 AlugaCars - Desenvolvido por <strong>Júlio César</strong></p>
+
+        <div class="social-links">
+            <i class="bi bi-instagram"></i><a href="https://www.instagram.com/juii.cesar/" target="_blank">Instagram</a>
+            <i class="bi bi-linkedin"></i><a href="https://www.linkedin.com/in/j%C3%BAlio-c%C3%A9sar-correa-alves-dev/" target="_blank">LinkedIn</a>
+            <i class="bi bi-github"></i><a href="https://github.com/Juii-Cesar" target="_blank">GitHub</a>
+        </div>
+    </footer>
+
+    <script src="assets/light-mode.js"></script>
 </body>
-<script src="assets/light-mode.js"></script>
 </html>

@@ -6,17 +6,17 @@
     --color-alugacars: #005d9b;
     --color-abas: #202020;
     --color-indicador: #000;
-
 }
 
 .light-mode:root{
-    --body-bg-color: #cacaca;
+    --body-bg-color: #b4b4b4;
     --body-color: #181818;
     --color-alugacars: #005d9b;
-    --color-abas: #ebebeb;
+    --color-abas: #cacaca;
     --bg-text-box:#dfdfdf;
-    --color-indicador: #b1b1b1;
+    --color-indicador: #f0f0f0;
 }
+
 
 *{
     padding: 0;
@@ -25,11 +25,21 @@
     font-family: "IBM Plex Sans", sans-serif;
 }
 
+/* --- AJUSTE QUE RESOLVE O SEU PROBLEMA --- */
 body{
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-color: var(--body-bg-color);
     color: var(--body-color);
+    padding-left: 75px; /* espaço para o menu lateral */
 }
+
+main.conteudo{
+    flex: 1;
+    padding-bottom: 40px;
+}
+
 
 header.inicio{
     background-color: var(--color-abas);
@@ -39,13 +49,12 @@ header.inicio{
 }
 
 header div.titulo{
-    margin-left: 75px;
+    margin-left: 0;
     display: flex;
     align-items: center;
+    padding: 10px 15px;
     background-color: var(--color-abas);
-    padding: 10px;
     user-select: none;
-    
 }
 
 h1{
@@ -57,6 +66,7 @@ h1 i{
     color: #0268ac;
     font-weight: normal;
 }
+
 
 .container {
     padding-top: 50px;
@@ -84,6 +94,7 @@ h1 i{
     white-space: nowrap;
 }
 
+
 .trilho{
     margin-top: 12px;
     margin-right: 20px;
@@ -93,7 +104,6 @@ h1 i{
     border-radius: 150px;
     position: relative;
     cursor: pointer;
-    user-select: none;
 }
 
 .trilho .indicador{
@@ -102,15 +112,32 @@ h1 i{
     background-color: var(--color-indicador);
     border-radius: 50%;
     transform: scale(.9);
-    user-select: none;
     position: absolute;
     left: 0;
     transition: 0.5s;
 }
 
-
 .trilho.light-mode .indicador{
     left: 40px;
     background-color: var(--color-indicador);
     transition: 0.5s;
+}
+
+
+footer.main-footer{
+    background-color: var(--color-abas);
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #1d1d1d;
+    color: var(--body-color);
+}
+
+.social-links a{
+    color: var(--color-alugacars);
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-links a:hover{
+    text-decoration: underline;
 }

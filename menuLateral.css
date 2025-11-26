@@ -6,16 +6,15 @@
     --color-alugacars: #005d9b;
     --color-abas: #202020;
     --color-indicador: #000;
-
 }
 
 .light-mode:root{
-    --body-bg-color: #cacaca;
+    --body-bg-color: #b4b4b4;
     --body-color: #181818;
     --color-alugacars: #005d9b;
-    --color-abas: #ebebeb;
+    --color-abas: #cacaca;
     --bg-text-box:#dfdfdf;
-    --color-indicador: #b1b1b1;
+    --color-indicador: #f0f0f0;
 }
 
 *{
@@ -23,11 +22,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "IBM Plex Sans", sans-serif;
-}
-
-body{
-    height: 100vh;
-    background-color: var(--body-bg-color);
 }
 
 nav.menuLateral{
@@ -54,7 +48,7 @@ nav.menuLateral:hover{
     padding-left: 10px;
 }
 
-.btnAbrir > i{
+.btnAbrir i{
     color: var(--body-color);
     font-size: 24px;
     cursor: pointer;
@@ -65,7 +59,7 @@ ul{
     list-style-type:none;
 }
 
-ul li.itemMenu :hover{
+ul li.itemMenu:hover{
     background-color: var(--color-alugacars);
     transition: .4s;
 }
@@ -82,12 +76,10 @@ ul li.itemMenu a{
 
 ul li.itemMenu a .txtLink{
     margin-left: 40px;
-
 }
 
 ul li.itemMenu a .icon i{
     font-size: 30px;
     margin-left: 25%;
 }
-
 

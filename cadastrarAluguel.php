@@ -143,5 +143,14 @@ $conn->close();
         </form>
     </div>
 </body>
+<footer class="main-footer">
+        <p>&copy; 2025 AlugaCars - Desenvolvido por <strong>Júlio César</strong></p>
+
+        <div class="social-links">
+            <i class="bi bi-instagram"></i><a href="https://www.instagram.com/juii.cesar/" target="_blank">Instagram</a>
+            <i class="bi bi-linkedin"></i><a href="https://www.linkedin.com/in/j%C3%BAlio-c%C3%A9sar-correa-alves-dev/" target="_blank">LinkedIn</a>
+            <i class="bi bi-github"></i><a href="https://github.com/Juii-Cesar" target="_blank">GitHub</a>
+        </div>
+    </footer>
 <script src="assets/light-mode.js"></script>
 </html>
