@@ -260,3 +260,45 @@ footer.main-footer{
 .social-links a:hover{
     text-decoration: underline;
 }
+
+.btnsPdf{
+    display: flex;
+    gap: 20px;
+    
+}
+
+.btnPdf{
+    background-color: var(--color-alugacars);
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.btnPdf:hover{
+    text-decoration: none;
+    background-color:#1b89ff ;
+}
+
+.btnsEmprestimo{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    vertical-align: middle;
+    gap: 5px;
+    
+}
+
+.btnEmprestimo{
+    background-color: var(--color-alugacars);
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btnEmprestimo:hover{
+    text-decoration: none;
+    background-color: #1b89ff;
+}

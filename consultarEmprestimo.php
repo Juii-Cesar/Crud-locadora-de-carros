@@ -3,12 +3,6 @@ include "conexao.php";
 
 $mensagem = "";
 
-if (isset($_GET['msg'])) {
-    if ($_GET['msg'] === "excluido") {
-        $mensagem = "<p class='msg-success'>Aluguel excluído com sucesso!</p>";
-    }
-}
-
 $buscar = $_GET['buscar'] ?? "";
 
 $sql = "SELECT 
@@ -17,7 +11,8 @@ $sql = "SELECT
             car.modelo AS carros,
             car.placa,
             a.dataEmprestimo,
-            a.dtDevolucaoPrevista
+            a.dtDevolucaoPrevista,
+            a.dataDevolucao
         FROM alugueis a
         JOIN clientes c ON a.idCliente = c.idClientes
         JOIN carros car ON a.idCarro = car.idCarro
@@ -79,52 +74,68 @@ $result = $stmt->get_result();
     </nav>
     
     <div class="container">
-    <h1>Alugueis</h1>
 
-    <a href="cadastrarAluguel.php"><i class="bi bi-plus-circle"></i> Adicionar Aluguel</a>
-    <div id="trilho" class="trilho">
-        <div id="indicador" class="indicador"></div>
-    </div>
-    <?php echo $mensagem; ?>
-    <form method="GET">
-        <input type="text" name="buscar" placeholder="Nome do cliente, modelo ou placa" value="<?php echo $buscar; ?>">
-        <button type="submit">Pesquisar</button>
-    </form>
+<h1>Aluguéis</h1>
 
-    <table border="1" cellpadding="6">
-        <tr>
-            <th>ID Empréstimo</th>
-            <th>Cliente</th>
-            <th>Carro</th>
-            <th>Placa</th>
-            <th>Data Aluguel</th>
-            <th>Devolução Prevista</th>
-        </tr>
-
-        <?php while($row = $result->fetch_assoc()){ ?>
-        <tr>
-            <td><?php echo $row['idEmprestimo']; ?></td>
-            <td><?php echo $row['clientes']; ?></td>
-            <td><?php echo $row['carros']; ?></td>
-            <td><?php echo $row['placa']; ?></td>
-            <td><?php echo $row['dataEmprestimo']; ?></td>
-            <td><?php echo $row['dtDevolucaoPrevista']; ?></td>
-            <td>
-                <form method="post" action="excluirAluguel.php" style="display:inline;">
-                    <input type="hidden" name="idEmprestimo" value="<?= $row["idEmprestimo"] ?>">
-                    <button type="submit">Excluir</button>
-                </form>
-
-                <form method="get" action="editar.php" style="display:inline; margin-left:5px;">
-                    <input type="hidden" name="idEmprestimo" value="<?= $row["idEmprestimo"] ?>">
-                    <button type="submit">Editar</button>
-                </form>
-            </td>
-
-        </tr>
-        <?php } ?>
-    </table>
+<a href="cadastrarAluguel.php" class="btn">+ Adicionar Aluguel</a>
+<div id="trilho" class="trilho">
+    <div id="indicador" class="indicador"></div>
 </div>
+
+<div class="btnsPdf" style="margin-top: 10px;">
+    <a class="btnPdf" href="gerar_pdf.php?tipo=pendentes" class="btn">Gerar PDF Pendentes</a>
+    <a id="btnPdfRight"class="btnPdf" href="gerar_pdf.php?tipo=devolvidos" class="btn">Gerar PDF Devolvidos</a>
+</div>
+
+<form method="GET">
+    <input type="text" name="buscar" placeholder="Nome, modelo ou placa" value="<?= $buscar ?>">
+    <button type="submit">Pesquisar</button>
+</form>
+
+<table border="1" cellpadding="6">
+    <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Carro</th>
+        <th>Placa</th>
+        <th>Data Aluguel</th>
+        <th>Previsão</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+
+<?php while($row = $result->fetch_assoc()){ ?>
+<tr>
+    <td><?= $row['idEmprestimo'] ?></td>
+    <td><?= $row['clientes'] ?></td>
+    <td><?= $row['carros'] ?></td>
+    <td><?= $row['placa'] ?></td>
+    <td><?= $row['dataEmprestimo'] ?></td>
+    <td><?= $row['dtDevolucaoPrevista'] ?></td>
+    <td>
+        <?php if ($row['dataDevolucao'] == null): ?>
+            <span style="color:red;">Pendente</span>
+        <?php else: ?>
+            <span style="color:green;">Devolvido</span>
+        <?php endif; ?>
+    </td>
+    <td class="btnsEmprestimo">
+
+        <?php if ($row['dataDevolucao'] == null): ?>
+            <a class="btnEmprestimo" href="devolverAluguel.php?idEmprestimo=<?= $row['idEmprestimo'] ?>">Devolver</a>
+        <?php else: ?>
+            
+        <?php endif; ?>
+
+        <a class="btnEmprestimo" href="editar.php?idEmprestimo=<?= $row['idEmprestimo'] ?>">Editar</a>
+    </td>
+</tr>
+<?php } ?>
+
+</table>
+
+</div>
+
 </body>
 <footer class="main-footer">
         <p>&copy; 2025 AlugaCars - Desenvolvido por <strong>Júlio César</strong></p>

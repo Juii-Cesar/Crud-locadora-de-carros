@@ -30,7 +30,10 @@ create table alugueis(
 	idCliente int,
     idEmprestimo int AUTO_INCREMENT primary key,
     dataEmprestimo date not null DEFAULT CURRENT_DATE,
-    dataDevolucao date,
+    dataDevolucao date DEFAULT null,
+    dtDevolucaoPrevista date no null
+    multa float
+    desconto float
     FOREIGN key (idCarro) REFERENCES carros(idCarro),
     FOREIGN key (idCliente) REFERENCES clientes(idClientes)
 );
