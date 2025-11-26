@@ -82,6 +82,9 @@ $result = $stmt->get_result();
     <h1>Alugueis</h1>
 
     <a href="cadastrarAluguel.php"><i class="bi bi-plus-circle"></i> Adicionar Aluguel</a>
+    <div id="trilho" class="trilho">
+        <div id="indicador" class="indicador"></div>
+    </div>
     <?php echo $mensagem; ?>
     <form method="GET">
         <input type="text" name="buscar" placeholder="Nome do cliente, modelo ou placa" value="<?php echo $buscar; ?>">
@@ -123,4 +126,5 @@ $result = $stmt->get_result();
     </table>
 </div>
 </body>
+<script src="assets/light-mode.js"></script>
 </html>

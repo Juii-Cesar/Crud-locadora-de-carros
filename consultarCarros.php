@@ -71,6 +71,9 @@ $result = $stmt->get_result();
         <h1>Veículos</h1>
 
         <a href="cadastrarCarro.php"><i class="bi bi-plus-circle"></i> Adicionar Veículo</a>
+        <div id="trilho" class="trilho">
+            <div id="indicador" class="indicador"></div>
+        </div>
         <?php echo $mensagem; ?>
         <form method="GET">
             <input type="text" name="buscar" placeholder="Modelo ou placa" value="<?php echo $buscar; ?>">
@@ -111,4 +114,5 @@ $result = $stmt->get_result();
     </div>
 
 </body>
+<script src="assets/light-mode.js"></script>
 </html>

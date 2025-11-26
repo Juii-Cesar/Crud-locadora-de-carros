@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root{
+    --body-bg-color: #3d3d3d;
+    --body-color: #fafafa;
+    --color-alugacars: #005d9b;
+    --color-abas: #202020;
+    --color-indicador: #000;
+
+}
+
+.light-mode:root{
+    --body-bg-color: #cacaca;
+    --body-color: #181818;
+    --color-alugacars: #005d9b;
+    --color-abas: #ebebeb;
+    --bg-text-box:#dfdfdf;
+    --color-indicador: #b1b1b1;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -9,15 +27,15 @@
 
 body{
     height: 100vh;
-    background-color: #3d3d3d;
+    background-color: var(--body-bg-color);
 }
 
 nav.menuLateral{
     width: 75px;
     height: 100%;
-    background-color: #202020;
+    background-color: var(--color-abas);
     padding: 40px 0 40px 1%;
-    box-shadow: 3px 0 0 #005d9b;
+    box-shadow: 3px 0 0 var(--color-alugacars);
     position: fixed;
     top: 0;
     left: 0;
@@ -37,7 +55,7 @@ nav.menuLateral:hover{
 }
 
 .btnAbrir > i{
-    color: #fff;
+    color: var(--body-color);
     font-size: 24px;
     cursor: pointer;
 }
@@ -48,12 +66,12 @@ ul{
 }
 
 ul li.itemMenu :hover{
-    background-color: #005d9b;
+    background-color: var(--color-alugacars);
     transition: .4s;
 }
 
 ul li.itemMenu a{
-    color: #fff;
+    color: var(--body-color);
     text-decoration: none;
     font-size: 20px;
     padding: 20px 4%;

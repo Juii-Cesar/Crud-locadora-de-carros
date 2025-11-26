@@ -73,7 +73,10 @@ if (isset($_GET["idClientes"])) {
 
     
         <h2>Editar Cliente</h2>
-        <a href="consultarCliente.html>Voltar</a>
+        <a href="consultarCliente.html">Voltar</a>
+        <div id="trilho" class="trilho">
+            <div id="indicador" class="indicador"></div>
+        </div>
         <form method="post" action="atualizar.php">
             <input type="hidden" name="idClientes" value="<?php echo $clientes['idClientes']; ?>">
             <label>Nome:</label><br>
@@ -92,4 +95,5 @@ if (isset($_GET["idClientes"])) {
     
 </div>
 </body>
+<script src="assets/light-mode.js"></script>
 </html>

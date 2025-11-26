@@ -19,6 +19,9 @@ include("conexao.php");
             <H1><i class="bi bi-taxi-front-fill"></i></H1>
             <h1>AlugaCars</h1>
         </div>
+        <div id="trilho" class="trilho">
+            <div id="indicador" class="indicador"></div>
+        </div>
 
     </header>
 
@@ -59,4 +62,5 @@ include("conexao.php");
          </ul>
     </nav>
 </body>
+<script src="assets/light-mode.js"></script>
 </html>

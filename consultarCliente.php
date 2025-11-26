@@ -68,6 +68,9 @@ $resultado = $stmt->get_result();
     <h1>Consulta de Clientes</h1>
 
     <a href="consultarCliente.html">Voltar</a>
+    <div id="trilho" class="trilho">
+        <div id="indicador" class="indicador"></div>
+    </div>
     <form method="post" action="consultarCliente.php" class="search-form">
         <input type="text" name="nome" placeholder="Pesquisar por nome..." value="<?= htmlspecialchars($consulta) ?>">
         <button type="submit">Buscar</button>
@@ -110,4 +113,5 @@ $resultado = $stmt->get_result();
     <?php endif; ?>
 </div>
 </body>
+<script src="assets/light-mode.js"></script>
 </html>

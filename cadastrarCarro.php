@@ -73,6 +73,9 @@ $conn->close();
     <div class="container">
         <h1>Cadastro de Carro</h1>
         <a href="consultarCarros.php">Voltar</a>
+        <div id="trilho" class="trilho">
+            <div id="indicador" class="indicador"></div>
+        </div>
 
         <?php echo $mensagem; ?>
 
@@ -88,4 +91,5 @@ $conn->close();
         </form>
     </div>
 </body>
+<script src="assets/light-mode.js"></script>
 </html>
