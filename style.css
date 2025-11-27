@@ -302,3 +302,9 @@ footer.main-footer{
     text-decoration: none;
     background-color: #1b89ff;
 }
+
+.infoAluguel{
+    display: flex;
+    gap: 10px;
+    
+}

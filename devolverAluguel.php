@@ -79,7 +79,7 @@ $dados = $resultado->fetch_assoc();
 
     <div class="container">
 
-    <h2>Devolução do Empréstimo #<?= $dados["idEmprestimo"] ?></h2>
+    <h1>Devolução do Empréstimo #<?= $dados["idEmprestimo"] ?></h1>
 
     <a href="consultarEmprestimo.php">Voltar</a>
     <div id="trilho" class="trilho">
@@ -92,23 +92,30 @@ $dados = $resultado->fetch_assoc();
         <input type="hidden" name="idCarro" value="<?= $dados["idCarro"] ?>">
         <input type="hidden" id="valorDiaria" value="<?= $dados["valorDiaria"] ?>">
         <input type="hidden" id="dataInicio" value="<?= $dados["dataEmprestimo"] ?>">
+        <div class= "infoAluguel">
+            <div>
+                <p><strong>Cliente:</strong> <?= $dados["cliente"] ?></p>
+                <p><strong>Carro:</strong> <?= $dados["modelo"] ?></p>
+                
+            </div>
+            <div>
+                <p><strong>Data do Empréstimo:</strong> <?= $dados["dataEmprestimo"] ?></p>
+                <p><strong>Devolução Prevista:</strong> <?= $dados["dtDevolucaoPrevista"] ?></p>
+                
+            </div>
+        </div>
+        
+        <br><label>Data da Devolução Real:</label>
+        <input type="date" id="dataDevolucao" name="dataDevolucao" required><br>
 
-        <p><strong>Cliente:</strong> <?= $dados["cliente"] ?></p>
-        <p><strong>Carro:</strong> <?= $dados["modelo"] ?></p>
-        <p><strong>Data do Empréstimo:</strong> <?= $dados["dataEmprestimo"] ?></p>
-        <p><strong>Devolução Prevista:</strong> <?= $dados["dtDevolucaoPrevista"] ?></p>
+        <br><label>Multa:</label>
+        <input type="number" id="multa" name="multa" value="0" step="0.01"><br>
 
-        <label>Data da Devolução Real:</label><br>
-        <input type="date" id="dataDevolucao" name="dataDevolucao" required><br><br>
+       <br> <label>Desconto:</label>
+        <input type="number" id="desconto" name="desconto" value="0" step="0.01"><br>
 
-        <label>Multa:</label><br>
-        <input type="number" id="multa" name="multa" value="0" step="0.01"><br><br>
-
-        <label>Desconto:</label><br>
-        <input type="number" id="desconto" name="desconto" value="0" step="0.01"><br><br>
-
-        <label>Valor Total:</label><br>
-        <input type="number" id="valorTotal" name="valorTotal" readonly><br><br>
+        <br><label>Valor Total:</label>
+        <input type="number" id="valorTotal" name="valorTotal" readonly><br>
 
         <button type="submit">Finalizar Devolução</button>
     </form>

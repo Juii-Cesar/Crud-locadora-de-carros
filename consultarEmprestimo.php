@@ -77,14 +77,18 @@ $result = $stmt->get_result();
 
 <h1>Aluguéis</h1>
 
-<a href="cadastrarAluguel.php" class="btn">+ Adicionar Aluguel</a>
+<a href="cadastrarAluguel.php" class="btn"><i class="bi bi-plus-circle"></i> Adicionar Aluguel</a>
 <div id="trilho" class="trilho">
     <div id="indicador" class="indicador"></div>
 </div>
 
 <div class="btnsPdf" style="margin-top: 10px;">
-    <a class="btnPdf" href="gerar_pdf.php?tipo=pendentes" class="btn">Gerar PDF Pendentes</a>
-    <a id="btnPdfRight"class="btnPdf" href="gerar_pdf.php?tipo=devolvidos" class="btn">Gerar PDF Devolvidos</a>
+    <a class="btnPdf" href="gerar_pdf.php?tipo=pendentes"><i class="bi bi-filetype-pdf"></i> Gerar PDF Pendentes</a>
+
+    <a id="btnPdfRight" class="btnPdf" href="gerar_pdf.php?tipo=devolvidos"><i class="bi bi-filetype-pdf"></i> Gerar PDF Devolvidos</a>
+
+    <a id="btnGrafico" class="btnPdf" href="grafico.php"><i class="bi bi-bar-chart-line"></i> Gráfico Geral</a>
+    
 </div>
 
 <form method="GET">
