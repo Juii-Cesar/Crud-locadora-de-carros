@@ -137,7 +137,7 @@ $result = $stmt->get_result();
                         <button type="submit">Excluir</button>
                     </form>
 
-                    <form method="get" action="editar.php" style="display:inline; margin-left:5px;">
+                    <form method="get" action="editarCarro.php" style="display:inline; margin-left:5px;">
                         <input type="hidden" name="idCarro" value="<?= $row["idCarro"] ?>">
                         <button type="submit">Editar</button>
                     </form>

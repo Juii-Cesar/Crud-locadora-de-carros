@@ -1,31 +1,25 @@
 <?php
 include("conexao.php");
 
-if (isset($_GET["idClientes"])) {
-    $idClientes = $_GET["idClientes"];
-    $sql = "SELECT * FROM clientes WHERE idClientes = $idClientes";
+if (isset($_GET["idCarro"])) {
+    $idCarro = $_GET["idCarro"];
+    $sql = "SELECT * FROM carros WHERE idCarro = $idCarro";
     $resultado = $conn->query($sql);
 
     if ($resultado->num_rows > 0) {
-        $clientes = $resultado->fetch_assoc();
+        $carros = $resultado->fetch_assoc();
     } else {
-        echo "<script>
-            alert('Cliente não encontrado.');
-            window.location.href = 'index.php';
-        </script>";
-        exit;
+        header("Location: consultarEmprestimo.php?msg=invalido");
+    exit;
     }
 } else {
-    echo "<script>
-        alert('id do Cliente não informado.');
-        window.location.href = 'index.php';
-    </script>";
+    header("Location: consultarEmprestimo.php?msg=invalido");
     exit;
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,21 +66,21 @@ if (isset($_GET["idClientes"])) {
     <div class="container">
 
     
-        <h2>Editar Cliente</h2>
+        <h2>Editar Carro</h2>
         <a href="consultarCliente.html">Voltar</a>
         <div id="trilho" class="trilho">
             <div id="indicador" class="indicador"></div>
         </div>
-        <form method="post" action="atualizar.php">
-            <input type="hidden" name="idClientes" value="<?php echo $clientes['idClientes']; ?>">
-            <label>Nome:</label><br>
-            <input type="text" name="nome" value="<?php echo $clientes['nome']; ?>" required><br><br>
+        <form method="post" action="atualizarCarro.php">
+            <input type="hidden" name="idCarro" value="<?php echo $carros['idCarro']; ?>">
+            <label>Modelo:</label><br>
+            <input type="text" name="modelo" value="<?php echo $carros['modelo']; ?>" required><br><br>
 
-            <label>Email:</label><br>
-            <input type="text" name="email" value="<?php echo $clientes['email']; ?>" required><br><br>
+            <label>Valor:</label><br>
+            <input type="text" name="valor" value="<?php echo $carros['valor']; ?>" required><br><br>
 
-            <label>Telefone:</label><br>
-            <input type="number" id="tel" name="tel" value="<?php echo $clientes['tel']; ?>" required><br><br>
+            <label>Placa:</label><br>
+            <input type="text" id="placa" name="placa" value="<?php echo $carros['placa']; ?>" required><br><br>
 
             <button type="submit">Salvar Alterações</button>
         </form>
@@ -104,6 +98,6 @@ if (isset($_GET["idClientes"])) {
             <i class="bi bi-github"></i><a href="https://github.com/Juii-Cesar" target="_blank">GitHub</a>
         </div>
     </footer>
-<script src="assets/mask.js"></script>
 <script src="assets/light-mode.js"></script>
+<script src="assets/mask.js"></script>
 </html>

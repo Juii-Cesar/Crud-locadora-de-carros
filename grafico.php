@@ -24,8 +24,11 @@ $dados = $result->fetch_assoc();
     <h1>Gráfico de Aluguéis</h1>
 
     <canvas id="graficoAlugueis" style="max-width: 450px; margin: 40px auto;"></canvas>
-
+    <div id="trilho" class="trilho">
+        <div id="indicador" class="indicador"></div>
+    </div>
     <a href="consultarEmprestimo.php" class="btnPdf">Voltar</a>
+
 </div>
 
 <script>
@@ -44,6 +47,6 @@ const grafico = new Chart(ctx, {
 });
 
 </script>
-
+<script src="assets/light-mode.js"></script>
 </body>
 </html>
