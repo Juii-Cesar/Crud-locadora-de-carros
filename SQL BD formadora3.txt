@@ -20,7 +20,8 @@ create table carros(
 	modelo varchar(100) not null,
     valor decimal(10,2) not null,
     placa varchar(10) not null,
-    disponivel boolean DEFAULT true
+    disponivel boolean DEFAULT true,
+    urlImgs varchar(500) null
 );
 
 use locadoraCarros;
@@ -31,9 +32,10 @@ create table alugueis(
     idEmprestimo int AUTO_INCREMENT primary key,
     dataEmprestimo date not null DEFAULT CURRENT_DATE,
     dataDevolucao date DEFAULT null,
-    dtDevolucaoPrevista date no null
-    multa float
-    desconto float
+    dtDevolucaoPrevista date no null,
+    multa float,
+    desconto float,
+    valorTotal float,
     FOREIGN key (idCarro) REFERENCES carros(idCarro),
     FOREIGN key (idCliente) REFERENCES clientes(idClientes)
 );

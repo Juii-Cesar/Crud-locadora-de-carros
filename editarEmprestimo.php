@@ -1,54 +1,21 @@
 <?php
 include("conexao.php");
 
-$mensagem = ""; 
+if (isset($_GET["idEmprestimo"])) {
+    $idEmprestimo = $_GET["idEmprestimo"];
+    $sql = "SELECT * FROM alugueis WHERE idEmprestimo = $idEmprestimo";
+    $resultado = $conn->query($sql);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $modelo = trim($_POST['modelo']);
-    $valor = trim($_POST['valor']);
-    $placa = trim($_POST['placa']);
-    $fotoURL = null;
-
-    // Verifica se enviou imagem
-    if (!empty($_FILES['foto']['name'])) {
-
-        $pasta = "upload/";
-        if (!is_dir($pasta)) {
-            mkdir($pasta, 0777, true);
-        }
-
-        $arquivoTmp = $_FILES['foto']['tmp_name'];
-        $nomeArquivo = uniqid() . "-" . basename($_FILES['foto']['name']);
-        $caminhoCompleto = $pasta . $nomeArquivo;
-
-        if (move_uploaded_file($arquivoTmp, $caminhoCompleto)) {
-            $fotoURL = $caminhoCompleto;
-        } else {
-            $mensagem = "<p class='msg-error'>Erro ao enviar a imagem!</p>";
-        }
-    }
-
-    if(!empty($modelo) && !empty($valor) && !empty($placa)) {
-
-        $stmt = $conn->prepare("
-            INSERT INTO carros (modelo, valor, placa, urlImgs) 
-            VALUES (?, ?, ?, ?)
-        ");
-        $stmt->bind_param("sdss", $modelo, $valor, $placa, $fotoURL);
-
-        if ($stmt->execute()) {
-            $mensagem = "<p class='msg-success'>Carro cadastrado com sucesso!</p>";
-        } else {
-            $mensagem = "<p class='msg-error'>Erro ao cadastrar: " . $stmt->error . "</p>";
-        }
-
-        $stmt->close();
+    if ($resultado->num_rows > 0) {
+        $alugueis = $resultado->fetch_assoc();
     } else {
-        $mensagem = "<p class='msg-error'>Preencha todos os campos obrigatórios!</p>";
+       header("Location: consultarEmprestimo.php?msg=invalido");
+    exit;
     }
+} else {
+    header("Location: consultarEmprestimo.php?msg=id nao informado");
+    exit;
 }
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -56,15 +23,15 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlugaCars</title>
-    <link rel="shortcut icon" href="alugacars.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="menuLateral.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <title>AlugaCars</title>
+    <link rel="shortcut icon" href="alugacars.ico" type="image/x-icon">
 </head>
 <body>
 
-     <nav class="menuLateral">
+    <nav class="menuLateral">
         <div class="btnAbrir">
             <i class="bi bi-list"></i>
         </div>
@@ -97,30 +64,40 @@ $conn->close();
     </nav>
 
     <div class="container">
-        <h1>Cadastro de Carro</h1>
-        <a href="consultarCarros.php">Voltar</a>
+
+    
+        <h2>Editar Aluguel</h2>
+        <a href="consultarEmprestimo.php">Voltar</a>
         <div id="trilho" class="trilho">
             <div id="indicador" class="indicador"></div>
         </div>
+        <form method="post" action="atualizar.php">
+            <input type="hidden" name="idEmprestimo" value="<?php echo $alugueis['idEmprestimo']; ?>">
 
-        <?php echo $mensagem; ?>
+            <br><label>Data de emprestimo:</label>
+            <input type="date" name="dataEmprestimo" value="<?php echo $alugueis['dataEmprestimo']; ?>" required><br>
 
-        <form method="post" enctype="multipart/form-data" action="">
-            <label>Modelo:</label>
-            <input type="text" name="modelo" required>
+            <br><label>Data de devolução:</label>
+            <input type="date" name="dataDevolucao" value="<?php echo $alugueis['dataDevolucao']; ?>" required><br>
 
-            <label>Valor (R$):</label>
-            <input type="number" name="valor" step="0.01" required> 
-    
-            <label>Placa:</label>
-            <input type="text" id="placa" name="placa" required>
+            <br><label>Data de devolução prevista:</label>
+            <input type="date" name="dataDevolucao" value="<?php echo $alugueis['dataDevolucao']; ?>" required><br>
 
-            <label>Foto do Carro:</label>
-            <input type="file" name="foto" accept="image/*"> 
-            <br>
-            <button type="submit">Cadastrar</button>
+            <br><label>multa:</label>
+            <input type="number" name="multa" value="<?php echo $alugueis['multa']; ?>" required><br>
+
+            <br><label>desconto:</label>
+            <input type="number" name="desconto" value="<?php echo $alugueis['desconto']; ?>" required><br>
+
+            <br><label>valor Total:</label>
+            <input type="number" name="valorTotal" value="<?php echo $alugueis['valorTotal']; ?>" required><br>
+            
+            <button type="submit">Salvar Alterações</button>
         </form>
     </div>
+<div style="margin-top: 20px;">
+    
+</div>
 </body>
 <footer class="main-footer">
         <p>&copy; 2025 AlugaCars - Desenvolvido por <strong>Júlio César</strong></p>
@@ -130,7 +107,6 @@ $conn->close();
             <i class="bi bi-linkedin"></i><a href="https://www.linkedin.com/in/j%C3%BAlio-c%C3%A9sar-correa-alves-dev/" target="_blank">LinkedIn</a>
             <i class="bi bi-github"></i><a href="https://github.com/Juii-Cesar" target="_blank">GitHub</a>
         </div>
-</footer>
+    </footer>
 <script src="assets/light-mode.js"></script>
-<script src="assets/mask.js"></script>
 </html>

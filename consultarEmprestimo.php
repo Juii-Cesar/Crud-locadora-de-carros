@@ -131,7 +131,7 @@ $result = $stmt->get_result();
             
         <?php endif; ?>
 
-        <a class="btnEmprestimo" href="editar.php?idEmprestimo=<?= $row['idEmprestimo'] ?>">Editar</a>
+        <a class="btnEmprestimo" href="editarEmprestimo.php?idEmprestimo=<?= $row['idEmprestimo'] ?>">Editar</a>
     </td>
 </tr>
 <?php } ?>

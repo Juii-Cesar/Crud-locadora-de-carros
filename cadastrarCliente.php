@@ -84,14 +84,15 @@ $conn->close();
             <input type="text" name="nome" required>
 
             <label>Email:</label>
-            <input type="email" name="email" required> 
+            <input type="email" id="email" name="email" required> 
             <label>Telefone:</label>
-            <input type="tel" name="tel" required>
-            <br><br>
+            <input type="tel" id="tel" name="tel" required>
             
-            <button type="submit">Cadastrar</button>
+            
+            <br><button type="submit">Cadastrar</button>
         </form>
     </div>
+    
 </body>
 <footer class="main-footer">
         <p>&copy; 2025 AlugaCars - Desenvolvido por <strong>Júlio César</strong></p>
@@ -103,4 +104,5 @@ $conn->close();
         </div>
     </footer>
 <script src="assets/light-mode.js"></script>
+<script src="assets/mask.js"></script>
 </html>
