@@ -86,7 +86,7 @@ if (isset($_GET["idClientes"])) {
             <input type="text" name="email" value="<?php echo $clientes['email']; ?>" required><br><br>
 
             <label>Telefone:</label><br>
-            <input type="number" id="tel" name="tel" value="<?php echo $clientes['tel']; ?>" required><br><br>
+            <input type="tel" id="tel" name="tel" value="<?php echo $clientes['tel']; ?>" required><br><br>
 
             <button type="submit">Salvar Alterações</button>
         </form>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "conexao.php";
 
 $mensagem = "";
@@ -83,6 +84,14 @@ $result = $stmt->get_result();
 
     <div class="container">
         <h1>Veículos</h1>
+         <?php
+                if (isset($_SESSION['message'])) {
+                    $tipo = isset($_SESSION['msg_type']) ? $_SESSION['msg_type'] : 'success';
+                    echo "<div class='message $tipo'>" . $_SESSION['message'] . "</div>";
+                    unset($_SESSION['message']);
+                    unset($_SESSION['msg_type']);
+                }
+                ?>
 
         <a href="cadastrarCarro.php"><i class="bi bi-plus-circle"></i> Adicionar Veículo</a>
 

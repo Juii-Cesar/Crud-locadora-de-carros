@@ -1,6 +1,15 @@
 <?php
 include "conexao.php";
 
+if (isset($_GET['msg'])) {
+    if ($_GET['msg'] === "devolvidos_excluidos") {
+        echo "<p class='msg-success'>Todos os aluguéis devolvidos foram excluídos com sucesso!</p>";
+    }
+    if ($_GET['msg'] === "erro_excluir") {
+        echo "<p class='msg-error'>Erro ao excluir aluguéis devolvidos!</p>";
+    }
+}
+
 $mensagem = "";
 
 $buscar = $_GET['buscar'] ?? "";
@@ -88,6 +97,11 @@ $result = $stmt->get_result();
     <a id="btnPdfRight" class="btnPdf" href="gerar_pdf.php?tipo=devolvidos"><i class="bi bi-filetype-pdf"></i> Gerar PDF Devolvidos</a>
 
     <a id="btnGrafico" class="btnPdf" href="grafico.php"><i class="bi bi-bar-chart-line"></i> Gráfico Geral</a>
+
+    <a class="btnPdf" style="background:#c62828;" href="excluirDevolvidos.php"
+        onclick="return confirm('Tem certeza que deseja excluir TODOS os aluguéis devolvidos?')">
+        <i class="bi bi-trash"></i> Excluir Todos os Devolvidos
+    </a>
     
 </div>
 

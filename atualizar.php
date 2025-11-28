@@ -1,6 +1,6 @@
 <?php
 include("conexao.php");
-
+ 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idClientes = $_POST["idClientes"];
     $nome = $_POST["nome"];
@@ -19,10 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Executa a query
         if ($stmt->execute()) {
-            echo "<script>
-                alert('Cliente atualizado com sucesso!');
-                window.location.href = 'consultarCliente.html';
-            </script>";
+            header("Location: consultarCliente.php?msg=Cliente atualizado com sucesso!");
+            exit;
         } else {
             echo "<script>
                 alert('Erro ao atualizar Cliente: " . addslashes($stmt->error) . "');

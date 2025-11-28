@@ -4,24 +4,49 @@ include("conexao.php");
 $mensagem = ""; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = trim($_POST['nome']);
+    $nome  = trim($_POST['nome']);
     $email = trim($_POST['email']);
-    $tel = trim($_POST['tel']);
+    $tel   = trim($_POST['tel']);
 
     if(!empty($nome) && !empty($email) && !empty($tel)) {
-        $stmt = $conn->prepare("insert into clientes (nome, email, tel) VALUES (?, ?, ?)");
-        $stmt->bind_param("ssi",$nome,$email,$tel);
 
-        if ($stmt->execute()) {
-            $mensagem = "<p class='msg-success'>Cliente cadastrado com sucesso!</p>";
+        // 1. Verificar se o e-mail já existe
+        $verificar = $conn->prepare("SELECT idClientes FROM clientes WHERE email = ?");
+        $verificar->bind_param("s", $email);
+        $verificar->execute();
+        $resultado = $verificar->get_result();
+
+        if ($resultado->num_rows > 0) {
+            // E-mail já cadastrado
+            $mensagem = "<p class='msg-error'>Este e-mail já está cadastrado!</p>";
         } else {
-            $mensagem = "<p class='msg-error'>Erro ao cadastrar: " . $stmt->error . "</p>";
+
+            // 2. Inserir novo cliente
+            $stmt = $conn->prepare("INSERT INTO clientes (nome, email, tel) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $nome, $email, $tel);
+
+            if ($stmt->execute()) {
+                // Mensagem de sucesso (opcional)
+                $mensagem = "<p class='msg-success'>Cliente cadastrado com sucesso!</p>";
+
+                // Redirecionamento após 1.5s
+                echo "<script>
+                        setTimeout(function(){
+                            window.location.href = 'consultarCliente.php';
+                        }, 1500);
+                      </script>";
+            } else {
+                $mensagem = "<p class='msg-error'>Erro ao cadastrar: " . $stmt->error . "</p>";
+            }
+            $stmt->close();
         }
-        $stmt->close();
-    }else{
+
+        $verificar->close();
+    } else {
         $mensagem = "<p class='msg-error'>Preencha todos os campos obrigatórios!</p>";
     }
 }
+
 $conn->close();
 ?>
 
