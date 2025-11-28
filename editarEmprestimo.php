@@ -71,7 +71,7 @@ if (isset($_GET["idEmprestimo"])) {
         <div id="trilho" class="trilho">
             <div id="indicador" class="indicador"></div>
         </div>
-        <form method="post" action="atualizar.php">
+        <form method="post" action="atualizarEmprestimo.php">
             <input type="hidden" name="idEmprestimo" value="<?php echo $alugueis['idEmprestimo']; ?>">
 
             <br><label>Data de emprestimo:</label>
@@ -81,7 +81,7 @@ if (isset($_GET["idEmprestimo"])) {
             <input type="date" name="dataDevolucao" value="<?php echo $alugueis['dataDevolucao']; ?>" required><br>
 
             <br><label>Data de devolução prevista:</label>
-            <input type="date" name="dataDevolucao" value="<?php echo $alugueis['dataDevolucao']; ?>" required><br>
+            <input type="date" name="dtDevolucaoPrevista" value="<?php echo $alugueis['dtDevolucaoPrevista']; ?>" required><br>
 
             <br><label>multa:</label>
             <input type="number" name="multa" value="<?php echo $alugueis['multa']; ?>" required><br>
