@@ -32,7 +32,7 @@ create table alugueis(
     idEmprestimo int AUTO_INCREMENT primary key,
     dataEmprestimo date not null DEFAULT CURRENT_DATE,
     dataDevolucao date DEFAULT null,
-    dtDevolucaoPrevista date no null,
+    dtDevolucaoPrevista date not null,
     multa float,
     desconto float,
     valorTotal float,
